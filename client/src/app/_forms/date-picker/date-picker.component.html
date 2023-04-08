@@ -1,0 +1,16 @@
+<div class="mb-3">
+    <input
+        type="text"
+        placeholder="{{label}}"
+        class="form-control"
+        bsDatepicker
+        [formControl]="control"
+        [bsConfig]="bsConfig"
+        [maxDate]="maxDate"
+        [class.is-invalid]="control.touched && control.errors"
+    >
+
+    <div class="invalid-feedback" *ngIf="control.touched && control.hasError('required')">
+        {{label}} is required
+    </div>
+</div>

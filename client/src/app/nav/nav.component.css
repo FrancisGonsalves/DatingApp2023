@@ -1,0 +1,8 @@
+.dropdown-toggle, .dropdown-menu
+{
+    cursor: pointer;
+}
+img {
+    max-height: 50px;
+    border: 2px solid rgb(255, 255, 255);
+}

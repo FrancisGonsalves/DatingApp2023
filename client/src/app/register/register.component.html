@@ -1,0 +1,61 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+    <h2 class="text-center text-primary">Sign Up</h2>
+    <hr>
+
+    <div class="mb-3">
+        <label style="margin-right: 10px">I am a </label>
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" value="male" formControlName="gender">Male
+            <input type="radio" class="form-check-input ms-2" value="female" formControlName="gender">Female
+        </label>
+    </div>
+
+    <app-text-input 
+        [label]="'User Name'" 
+        [formControl]="$any(registerForm.controls['userName'])"
+    ></app-text-input>
+
+    <app-text-input
+        [label]="'Known As'"
+        [formControl]="$any(registerForm.controls['knownAs'])"
+    ></app-text-input>
+
+    <app-date-picker
+        [label]="'Date of Birth'"
+        [maxDate]="maxDate"
+        [formControl]="$any(registerForm.controls['dateOfBirth'])"
+    ></app-date-picker>
+
+    <app-text-input
+        [label]="'City'"
+        [formControl]="$any(registerForm.controls['city'])"
+    ></app-text-input>
+
+    <app-text-input
+        [label]="'Country'"
+        [formControl]="$any(registerForm.controls['country'])"
+    ></app-text-input>
+
+    <app-text-input 
+        [label]="'Password'" 
+        [type]="'password'" 
+        [formControl]="$any(registerForm.controls['password'])" 
+    ></app-text-input>
+
+    <app-text-input
+        [label]="'Confirm Password'"
+        [type]="'password'"
+        [formControl]="$any(registerForm.controls['confirmPassword'])"    
+    ></app-text-input>
+    
+    <div class="row" *ngIf="validationErrors">
+        <ul class="text-danger">
+            <li *ngFor="let error of validationErrors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success me-2" [disabled]="!registerForm.valid">Register</button>
+        <button class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
+</form>
